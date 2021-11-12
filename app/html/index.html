@@ -2,12 +2,56 @@
 <html>
   <head>
     <title>Migration Map</title>
-    <link rel="stylesheet" href="../styles/map.css">
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <meta charset="utf-8" />
+    <!-- Various stylesheets -->
+    <link
+      rel="stylesheet"
+      href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://rawgit.com/Caged/d3-tip/master/examples/example-styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <style type="text/css">
+      .leaflet-container {
+        background-color: #c5e8ff;
+      }
+    </style>
+    <link rel="stylesheet" href="../styles/map.css" />
   </head>
   <body>
-    <svg width="1920" height="1080"></svg>
+    <!-- jQuery & Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Sweetalert 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-path.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+
+    <div class="container">
+      <h1 class="container-content">Migrations 2015</h1>
+    </div>
+    <div class="container" id="reset">
+      <div class="container-content" id="buttons"></div>
+    </div>
+    <div id="map"></div>
+    <div id="source">
+      Source:
+      <a
+        id="source-link"
+        href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
+        >U.N. 2015 Migration data</a
+      >
+    </div>
     <script src="../script/test.js"></script>
   </body>
 </html>
