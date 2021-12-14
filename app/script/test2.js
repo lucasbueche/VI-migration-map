@@ -8,7 +8,7 @@ var path = d3.geoPath();
 var projection = d3.geoMercator()
   .scale(70)
   .center([0,20])
-  .translate([width / 2, height / 2]);
+  .translate([width/2, height/2]);
 
 // Data and color scale
 var data = d3.map();
@@ -19,7 +19,7 @@ var colorScale = d3.scaleThreshold()
 // Load external data and boot
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-  .defer(d3.csv, "../../data/CSV/dataset_2015.csv", function(d) { data.set(d.code, +d.sold); })
+  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.sold); })
   .await(ready);
 
 function ready(error, topo) {
