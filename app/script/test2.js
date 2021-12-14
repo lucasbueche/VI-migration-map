@@ -22,7 +22,7 @@ svg.selectAll("g").remove();
 var path = d3.geoPath();
 var projection = d3.geoMercator()
   .scale(120)
-  .center([0,20])
+  .center([0,height/40])
   .translate([width/2, height/2]);
 
 // Zooming
@@ -40,9 +40,14 @@ var colorScale = d3.scaleThreshold()
 
 // Load external data and boot
 d3.queue()
-  .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.sold); })
+  .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geojson")
+  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.sold, d.country); })
   .await(ready);
+
+// Define the div for the tooltip
+var div = d3.select("body").append("div")
+.attr("class", "tooltip")
+.style("opacity", 0);
 
 function ready(error, topo) {
     let mouseOver = function(d) {
@@ -55,17 +60,27 @@ function ready(error, topo) {
           .duration(2)
           .style("opacity", 1)
           .style("stroke", "black")
+        div.transition()
+            .duration(2)
+            .style("opacity", .9);
+        div	.html(data.get(d.country) + "<br/>"  + data.get(d.id))
+            .style("left", (d3.mouse(this)[0]) + "px")
+            .style("top", (d3.mouse(this)[1]) + "px");
       }
     let mouseLeave = function(d) {
-    d3.selectAll(".Country")
-        .transition()
-        .duration(2)
-        .style("opacity", .8)
-    d3.select(this)
-        .transition()
-        .duration(2)
-        .style("stroke", "transparent")
+        d3.selectAll(".Country")
+            .transition()
+            .duration(2)
+            .style("opacity", .8)
+        d3.select(this)
+            .transition()
+            .duration(2)
+            .style("stroke", "transparent")
+        div.transition()
+            .duration(2)
+            .style("opacity", 0);
     }
+
     // Draw the map
     svg.append("g")
         .selectAll("path")
