@@ -1,6 +1,18 @@
 /* MIGRATION 2015 */
 /* eslint-disable no-undef */
 
+const red_to_green_degraded = ["#ff0000",
+	"#fe4400",
+	"#f86600",
+	"#ee8200",
+	"#df9b00",
+	"#cdb200",
+	"#b6c700",
+	"#98db00",
+	"#6fed00",
+	"#00ff00"
+	];
+
 // Adding basic elements
 const body = d3.select("body");
 
