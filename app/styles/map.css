@@ -1,7 +1,7 @@
 body {
     background-color: #121b2e;
   }
-  
+
   .button {
     color: #7181a6;
     font-size: 10px;
@@ -13,7 +13,7 @@ body {
     display: inline-block;
     transition: all 0.4s ease 0s;
   }
-  
+
   .button:hover {
     text-decoration: none;
     cursor: pointer;
@@ -22,11 +22,11 @@ body {
     border-color: #7181a6;
     transition: all 0.4s ease 0s;
   }
-  
+
   .button:link {
     text-decoration: none;
   }
-  
+
   .container {
     display: flex;
     width: 100%;
@@ -34,22 +34,30 @@ body {
     justifiy-content: center;
     padding-top: 5px;
   }
-  
+
   .container-content {
     margin: 0 auto;
     color: #7181a6;
   }
-  
+
   #source {
     margin: 10px;
     color: #7181a6;
   }
-  
+
   #source-link {
     color: #7181a6;
     text-decoration: underline;
   }
-  
+
   #source-link:hover {
     color: #39455f;
   }
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 0%;
+  vertical-align: middle;
+  overflow: hidden;
+}

@@ -41,15 +41,26 @@
     <div class="container" id="reset">
       <div class="container-content" id="buttons"></div>
     </div>
-    <svg id="my_dataviz" width="1920" height="1080"></svg>
+    <div class="svg-container">
+      <svg id="my_dataviz" width="1000" height="500"></svg>
+    </div>
     <div id="source">
       Source:
-      <a
-        id="source-link"
+      <a id="source-link"
         href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
-        >U.N. 2015 Migration data</a
-      >
+        >U.N. 2015 Migration data</a>
     </div>
     <script src="../script/test2.js"></script>
+    <script>
+      function onResize() {
+        let width = window.innerWidth;
+        let canva = document.getElementById('my_dataviz');
+        canva.setAttribute('width', width);
+        canva.setAttribute('height', width / 1000 * 500);
+        main_draw();
+      };
+      window.addEventListener('resize', onResize);
+      onResize();
+    </script>
   </body>
 </html>
