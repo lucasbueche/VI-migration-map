@@ -40,7 +40,7 @@ var colorScale = d3.scaleThreshold()
 
 // Load external data and boot
 d3.queue()
-  .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geo.json")
+  .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geojson")
   .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.sold); })
   .await(ready);
 
@@ -75,7 +75,8 @@ function ready(error, topo) {
         d3.select(this)
             .transition()
             .duration(2)
-            .style("stroke", "transparent")
+            .style('opacity', .8)
+            .style("stroke", "black")
         div.transition()
             .duration(2)
             .style("opacity", 0);
