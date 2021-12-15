@@ -35,7 +35,7 @@ var svg = d3.select("#my_dataviz")
 // Data and color scale
 var data = d3.map();
 var colorScale = d3.scaleThreshold()
-  .domain([-1000000, -10000, -100, 0, 100, 10000, 1000000])
+  .domain([-1, -0.5, -0.25, -0.125, -0.00625, 0, 0.00625, 0.125, 0.25, 0.5, 1])
   .range(red_to_green_degraded);
 
 // Load external data and boot
