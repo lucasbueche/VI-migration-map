@@ -96,7 +96,7 @@ function ready(error, topo) {
             d.total = data.get(d.id) || 0;
             return colorScale(d.total);
         })
-        .style("stroke", "transparent")
+        .style("stroke", "black")
         .attr("class", function(d){ return "Country" } )
         .style("opacity", .8)
         .on("mouseover", mouseOver )
