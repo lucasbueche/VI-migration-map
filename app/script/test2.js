@@ -40,8 +40,8 @@ var colorScale = d3.scaleThreshold()
 
 // Load external data and boot
 d3.queue()
-  .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geojson")
-  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.sold, d.country); })
+  .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geo.json")
+  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.sold); })
   .await(ready);
 
 // Define the div for the tooltip
@@ -62,11 +62,11 @@ function ready(error, topo) {
           .style("stroke", "black")
         div.transition()
             .duration(2)
-            .style("opacity", .9);
-        div	.html(data.get(d.country) + "<br/>"  + data.get(d.id))
+            .style("opacity", .5);
+        div	.html("data.get(d.id)" + "<br/>"  + "data.get(d.id)")
             .style("left", (d3.mouse(this)[0]) + "px")
             .style("top", (d3.mouse(this)[1]) + "px");
-      }
+      };
     let mouseLeave = function(d) {
         d3.selectAll(".Country")
             .transition()
