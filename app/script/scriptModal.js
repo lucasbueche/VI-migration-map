@@ -3,7 +3,7 @@
     var modal = {
         model: {
             modalTitle: "d3-view modal",
-            modalBody: faker.lorem.sentences(3),
+            modalBody: "faker.lorem.sentences(3)",
             showModal: false,
             $showModal () {
                 this.showModal = true;
