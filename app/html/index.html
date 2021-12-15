@@ -27,7 +27,6 @@
     <!-- jQuery & Bootstrap -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
     <!-- Sweetalert 2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
@@ -35,7 +34,6 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-    
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
     <script src="https://unpkg.com/d3-require@0.4.5/build/d3-require.js"></script>
@@ -53,24 +51,27 @@
           max-width: 900px;
       }
     </style>
-
     <div class="container">
       <h1 class="container-content">Migrations 2015</h1>
     </div>
     <div class="container" id="reset">
       <div class="container-content" id="buttons"></div>
     </div>
-    <div class="svg-container">
-      <svg id="my_dataviz" width="800" height="500"></svg>
-    </div>
-    <div id="source">
-      Sources:
-      <a id="source-link"
-        href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
-        >U.N. 2015 Migration data</a>
-      <a id="source-link"
-        href="https://data.worldbank.org/indicator/SP.POP.TOTL"
-        >World Bank population data</a>
+    <div>
+      <div style="padding: 1em; text-align:center; ">
+        <b style="color: white; float: right;">
+          "Color blindness mode"
+        </b> <br/>
+        <form style="float: right;" action="">
+          <input type="button" id="1" value="OFF" style="color:blue" onclick="toggle(this);">
+        </form>
+      </div>
+      <div style="width: 25%; float:right; margin-top:20%">
+        <img style="object-position: bottom;" id="my_scale" src="../../data/img/red_to_green_scale.jpeg" alt="Echelle des couleurs">
+      </div>
+      <div class="svg-container" style="width: 65%; float:left">
+        <svg id="my_dataviz"></svg>
+      </div>
     </div>
     <script src="../script/scriptSVG.js"></script>
     <script>
@@ -87,4 +88,15 @@
   </div>
   <script src="../script/scriptModal.js"></script>
   </body>
+  <footer>
+    <div id="source">
+      Sources:
+      <a id="source-link"
+        href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
+        >U.N. 2015 Migration data</a>
+      <a id="source-link"
+        href="https://data.worldbank.org/indicator/SP.POP.TOTL"
+        >World Bank population data</a>
+    </div>
+  </footer>
 </html>

@@ -1,15 +1,28 @@
 function main_draw() {
-    const red_to_green_degraded = ["#ff0000",
-	"#fe4400",
-	"#f86600",
-	"#ee8200",
-	"#df9b00",
-	"#cdb200",
-	"#b6c700",
-	"#98db00",
-	"#6fed00",
-	"#00ff00"
+    const red_to_green_degraded = [
+      "#ff0000",
+      "#fe4400",
+      "#f86600",
+      "#ee8200",
+      "#df9b00",
+      "#cdb200",
+      "#b6c700",
+      "#98db00",
+      "#6fed00",
+      "#00ff00"
 	];
+  const colorblind_degraded = [
+    "#900c00",
+    "#c2270a",
+    "#fe6e1a",
+    "#feb927",
+    "#c0ee3d",
+    "#6afd6a",
+    "#2ee5ae",
+    "#2aabee",
+    "#4860e6",
+    "#23171b",
+  ];
 
 // The svg
 var svg = d3.select("svg"),
@@ -21,7 +34,7 @@ svg.selectAll("g").remove();
 // Map and projection
 var path = d3.geoPath();
 var projection = d3.geoMercator()
-  .scale(120)
+  .scale(100)
   .center([0,height/40])
   .translate([width/2, height/2]);
 
@@ -32,11 +45,20 @@ var svg = d3.select("#my_dataviz")
 }))
 .append("g");
 
+
+let color = red_to_green_degraded;
+if(isColorBlindness){
+  document.getElementById("my_scale").src="../../data/img/colorblind_scale.jpeg"
+  color = colorblind_degraded;
+} else {
+  document.getElementById("my_scale").src="../../data/img/red_to_green_scale.jpeg"
+  color = red_to_green_degraded;
+}
 // Data and color scale
 var data = d3.map();
 var colorScale = d3.scaleThreshold()
   .domain([-10000, -1000, -100, -10, 0, 10, 100, 1000, 10000])
-  .range(red_to_green_degraded);
+  .range(color);
 
 // Load external data and boot
 d3.queue()
@@ -106,4 +128,17 @@ function ready(error, topo) {
         .on("click", function() {vm.model.$modal() })
     }
 }
+// Function and boolean for color blindness mode
+var isColorBlindness = Boolean(false);
+function toggle(button){
+  if(document.getElementById("1").value=="OFF"){
+    isColorBlindness = true;
+    main_draw();
+    document.getElementById("1").value="ON";}
+  else if(document.getElementById("1").value=="ON"){
+    isColorBlindness = false;
+    main_draw();
+    document.getElementById("1").value="OFF";}
+}
 main_draw();
+
