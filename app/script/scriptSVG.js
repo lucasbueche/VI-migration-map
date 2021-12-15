@@ -41,7 +41,7 @@ var colorScale = d3.scaleThreshold()
 // Load external data and boot
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geojson")
-  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.sold); })
+  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.norm_sold); })
   .await(ready);
 
 // Define the div for the tooltip
@@ -103,7 +103,7 @@ function ready(error, topo) {
         .style("opacity", .8)
         .on("mouseover", mouseOver )
         .on("mouseleave", mouseLeave )
-        .on("click", function() { modal(); })
+        .on("click", function() { $modal(); })
     }
 }
 main_draw();
