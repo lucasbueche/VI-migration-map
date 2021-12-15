@@ -62,10 +62,10 @@ function ready(error, topo) {
           .style("stroke", "black")
         div.transition()
             .duration(2)
-            .style("opacity", .5);
-        div	.html("data.get(d.id)" + "<br/>"  + "data.get(d.id)")
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY) + "px");
+            .style("opacity", 1);
+        div	.html(d.properties.name + "<br/>"  + data.get(d.id))
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 30) + "px");
       };
     let mouseLeave = function(d) {
         d3.selectAll(".Country")
@@ -95,6 +95,7 @@ function ready(error, topo) {
         // set the color of each country
         .attr("fill", function (d) {
             d.total = data.get(d.id) || 0;
+            if(d.total == 0) return "grey"
             return colorScale(d.total);
         })
         .style("stroke", "black")
