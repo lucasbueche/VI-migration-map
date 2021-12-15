@@ -35,7 +35,7 @@ var svg = d3.select("#my_dataviz")
 // Data and color scale
 var data = d3.map();
 var colorScale = d3.scaleThreshold()
-  .domain([-1000000, -10000, -100, 0, 100, 10000, 1000000])
+  .domain([-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8])
   .range(red_to_green_degraded);
 
 // Load external data and boot
@@ -63,7 +63,7 @@ function ready(error, topo) {
         div.transition()
             .duration(2)
             .style("opacity", 1);
-        div	.html(d.properties.name + "<br/>"  + data.get(d.id))
+        div	.html((data.get(d.id) == undefined) ? d.properties.name + "<br/>"  + "No data" : d.properties.name + "<br/>"  + data.get(d.id))
             .style("left", (d3.event.pageX + 10) + "px")
             .style("top", (d3.event.pageY - 30) + "px");
       };
