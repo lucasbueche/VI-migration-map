@@ -64,8 +64,8 @@ function ready(error, topo) {
             .duration(2)
             .style("opacity", .5);
         div	.html("data.get(d.id)" + "<br/>"  + "data.get(d.id)")
-            .style("left", (d3.mouse(this)[0]) + "px")
-            .style("top", (d3.mouse(this)[1]) + "px");
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY) + "px");
       };
     let mouseLeave = function(d) {
         d3.selectAll(".Country")
