@@ -2,7 +2,7 @@ var modal = {
     model: {
         showModal: false,
         $showModal (country, date, emmigration, immigration) {
-            this.modalTitle = "Details for " + country + " in time period " + (date-5)+"-"+date;
+            this.modalTitle = "Details for " + country + " in " +date;
             this.modalBody = "Country most emigrated to: " + emmigration[0] + "<br/>"
             this.modalBody += "Total people born in "+ country +" living in " + emmigration[0] +" in "+ date + ": " + emmigration[1] +"<br/>"
             this.modalBody += "<br/> Country most immigrated from: " + immigration[0] + "<br/>"
