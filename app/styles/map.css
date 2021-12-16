@@ -2,83 +2,64 @@ body {
     background-color: #121b2e;
   }
 
-  .button {
-    color: #7181a6;
-    font-size: 10px;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: hlsa(0, 0%, 0%, 0);
-    padding: 5px 10px 5px 10px;
-    border: 2px solid #7181a6;
-    display: inline-block;
-    transition: all 0.4s ease 0s;
-  }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  flex-direction: column;
+}
+.container_row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  flex-direction: row;
+}
 
-  .button:hover {
-    text-decoration: none;
-    cursor: pointer;
-    color: #121b2e;
-    background: #7181a6;
-    border-color: #7181a6;
-    transition: all 0.4s ease 0s;
-  }
+.container-content {
+  margin: 0 auto;
+  color: #7181a6;
+  flex-direction: row;
+}
 
-  .button:link {
-    text-decoration: none;
-  }
+#source {
+  margin: 10px;
+  color: #7181a6;
+}
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5px;
-    flex-direction: column;
-  }
-  .container_row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5px;
-    flex-direction: row;
-  }
+#source-link {
+  color: #7181a6;
+  text-decoration: underline;
+}
 
-  .container-content {
-    margin: 0 auto;
-    color: #7181a6;
-    flex-direction: row;
-  }
-
-  #source {
-    margin: 10px;
-    color: #7181a6;
-  }
-
-  #source-link {
-    color: #7181a6;
-    text-decoration: underline;
-  }
-
-  #source-link:hover {
-    color: #39455f;
-  }
+#source-link:hover {
+  color: #39455f;
+}
 .svg-container {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 0%;
-  vertical-align: middle;
-  overflow: hidden;
+display: inline-block;
+position: relative;
+width: 100%;
+padding-bottom: 0%;
+vertical-align: middle;
+overflow: hidden;
+}
+
+img{
+max-width:100%;
+max-height:100%;
+display: block;
 }
 
 div.tooltip {
-  position: absolute;
-  text-align: center;
-  width: 120px;
-  height: 48px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
+position: absolute;
+text-align: center;
+width: 120px;
+height: 48px;
+padding: 2px;
+font: 12px sans-serif;
+background: lightsteelblue;
+border: 0px;
+border-radius: 8px;
+pointer-events: none;
 }
