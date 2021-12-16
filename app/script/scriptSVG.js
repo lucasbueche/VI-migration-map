@@ -126,7 +126,7 @@ function ready(error, topo) {
         .style("opacity", .8)
         .on("mouseover", mouseOver )
         .on("mouseleave", mouseLeave )
-        .on("click", function() {vm.model.$modal() })
+        .on("click", function(d) {vm.model.$modal(d.properties.name, date) })
     }
 }
 // Function and boolean for color blindness mode
