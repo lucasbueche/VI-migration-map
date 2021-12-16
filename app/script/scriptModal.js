@@ -1,9 +1,12 @@
 var modal = {
     model: {
-        modalTitle: "d3-view modal",
         modalBody: "faker.lorem.sentences(3)",
         showModal: false,
-        $showModal () {
+        $showModal (country, date) {
+            this.modalTitle = "Details for " + country + " in time period " + (date-5)+"-"+date;
+            d3.queue()
+                .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/dataset_"+date+".csv", function(d) { data.set(d.code, +d.norm_sold); })
+                .await(findMaxMigration);
             this.showModal = true;
         },
         $hideModal () {
@@ -43,16 +46,18 @@ var modal = {
     render: function () {
         return this.renderFromUrl('../html/modal.html')
     }
+    
 };
 
 var vm = d3.view({
     model: {
-        $modal() {
+        $modal(country, date) {
             var modal = vm.select('.modal');
+
             if (!modal.size())
-                vm.select('body').append('modal').mount(null, v => v.model.$showModal());
+                vm.select('body').append('modal').mount(null, v => v.model.$showModal(country, date));
             else
-                modal.model().$showModal();
+                modal.model().$showModal(country, date);
         }
     },
     components: {
@@ -63,3 +68,7 @@ var vm = d3.view({
     }
 });
 vm.mount('body');
+
+function findMaxMigration(error, topo){
+    
+}
