@@ -51,30 +51,47 @@
           max-width: 900px;
       }
     </style>
-    
-    <div>
-      <div class="container">
-        <h1 class="container-content" id="title">Migrations between 2010 and 2015</h1>
+      <div class="container" style="width: 90vw; height:5%; margin-top:1%">
+        <h1 class="container-content" id="title">5 years migration between 2010 and 2015</h1>
       </div>
-      <div class="svg-container" style="width:65%; float:left; height:100%">
-        <svg id="my_dataviz"></svg>
-      </div>
-      <div style="width:15% ; float:right; margin-top:10%; margin-right:10%">
-        <input type="range" value="2015" min="1995" max="2015" step="5" class="dates" name="dates"
+      <div class="container_row" style="width: 95vw;"style=" text-align:center">
+        <svg id="my_dataviz" style="height: 90%; width:95%; margin:1%;"></svg>
+        <div id="right_container" class="container" style="width:25%">
+          <div style="height: 20%;">
+            <b style="height: 5%; width: 100%; text-align:center; color: white; float: right;">
+              Year (from 1990 to 2015)
+            </b> <br/>
+            <input style="margin-bottom: 10%" type="range" value="2015" min="1995" max="2015" step="5" class="dates" name="dates"
         onchange="changeDate(value)">
-      <div style="padding: 1em; text-align:center;">
-        <b style="color: white; float: right;">
-          "Color blindness mode"
-        </b> <br/>
-        <form style="float: right;" action="">
-          <input type="button" id="1" value="OFF" style="color:blue" onclick="toggle(this);">
-        </form>
+          </div>
+          <div style="height: 60%;">
+            <img style="margin-bottom: 10%" id="my_scale" src="../../data/img/red_to_green_scale.jpeg" alt="Echelle des couleurs">
+          </div>
+            <b style="height: 5%; width: 100%; text-align:center; color: white; float: right;">
+              Color blindness mode
+            </b> <br/>
+            <form action="">
+              <input type="button" id="1" value="OFF" style="color:blue" onclick="toggle(this);">
+            </form>
+        </div>
       </div>
-      <div style="width: 35%; float:right; margin-top:10%; margin-bottom:10%">
-        <img style="object-position: bottom;" id="my_scale" src="../../data/img/red_to_green_scale.jpeg" alt="Echelle des couleurs">
+      <div class="container">
+        <div id="source">
+          Sources:
+          <ul>
+            <li>
+              <a id="source-link"
+              href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
+              >U.N. 2015 Migration data</a>
+            </li>
+            <li>
+              <a id="source-link"
+              href="https://data.worldbank.org/indicator/SP.POP.TOTL"
+              >World Bank population data</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      
-    </div>
     <script src="../script/scriptSVG.js"></script>
     <script>
       function changeDate(date){
@@ -83,9 +100,10 @@
       }
       function onResize() {
         let width = window.innerWidth;
+        let height = window.innerHeight;
         let canva = document.getElementById('my_dataviz');
         canva.setAttribute('width', width);
-        canva.setAttribute('height', width / 800 * 500);
+        canva.setAttribute('height', height);
         main_draw();
       };
       window.addEventListener('resize', onResize);
@@ -94,21 +112,4 @@
   </div>
   <script src="../script/scriptModal.js"></script>
   </body>
-  <footer>
-    <div id="source">
-      Sources:
-      <ul>
-        <li>
-          <a id="source-link"
-          href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
-          >U.N. 2015 Migration data</a>
-        </li>
-        <li>
-          <a id="source-link"
-          href="https://data.worldbank.org/indicator/SP.POP.TOTL"
-          >World Bank population data</a>
-        </li>
-      </ul>
-    </div>
-  </footer>
 </html>

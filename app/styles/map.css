@@ -29,15 +29,23 @@ body {
 
   .container {
     display: flex;
-    width: 100%;
     align-items: center;
-    justifiy-content: center;
+    justify-content: center;
     padding-top: 5px;
+    flex-direction: column;
+  }
+  .container_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    flex-direction: row;
   }
 
   .container-content {
     margin: 0 auto;
     color: #7181a6;
+    flex-direction: row;
   }
 
   #source {

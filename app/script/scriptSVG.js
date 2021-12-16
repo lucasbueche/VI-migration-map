@@ -34,8 +34,8 @@ svg.selectAll("g").remove();
 // Map and projection
 var path = d3.geoPath();
 var projection = d3.geoMercator()
-  .scale(150)
-  .center([0,height/40])
+  .scale(170)
+  .center([-50,50])
   .translate([width/3, height/3]);
 
 // Zooming
@@ -141,5 +141,13 @@ function toggle(button){
     main_draw();
     document.getElementById("1").value="OFF";}
 }
-main_draw();
 
+// Function for determination the CSS property and size of the svg according to width of the screen
+window.addEventListener("resize", function() {
+  if (window.matchMedia("(min-width: 1000px)").matches) {
+    document.getElementById("my_dataviz").style.height = "60%";
+  } else {
+    document.getElementById("my_dataviz").style.height = "90%";
+  }
+})
+main_draw();
