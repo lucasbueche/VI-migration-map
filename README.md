@@ -1,5 +1,6 @@
 # Migration Map
-Project for the Information Visualisation course, HES-SO Master
+Project for the Information Visualisation course, HES-SO Master, given by Prof. David Grunenwald
+
 
 ### Students
 
@@ -18,7 +19,9 @@ Clicking on a country will show the country where most people emigrated to, and 
 
 For development, you will need [Visual Studio Code](https://code.visualstudio.com/) installed.
 
-If you only want to use this project, then you don't have to install VSCode
+You'll also need the "Live Server" extension of Visual Studio Code
+
+![Live Server](data/img/extension.png "Live Server extension")
 
 ## Project Installation
 
@@ -28,4 +31,8 @@ First, you'll need to clone this project
   
 # Running the project
   
-All you need to do is to open the index.html file, located in the VI-migration-map/app/html folder
+Open the project in VSCode, open the index.html file, located in the app/html folder, and launch the server on the bottom right of the window.
+
+![Go live](data/img/go_live.jpg "Go live")
+
+Your browser will then automatically open a tab with the project, on localhost.
