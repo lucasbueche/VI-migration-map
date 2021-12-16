@@ -56,6 +56,8 @@ if(isColorBlindness){
 }
 // Data and color scale
 var data = d3.map();
+var emmigration = {};
+var immigration = {};
 var colorScale = d3.scaleThreshold()
   .domain([-10000, -1000, -100, -10, 0, 10, 100, 1000, 10000])
   .range(color);
@@ -64,7 +66,11 @@ let dataset = "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/ma
 // Load external data and boot
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geojson")
-  .defer(d3.csv, dataset, function(d) { data.set(d.code, +d.norm_sold); })
+  .defer(d3.csv, dataset, function(d) { 
+    data.set(d.code, +d.norm_sold); 
+    emmigration[d.code] = new Array(d.country_emm, d.max_emm)
+    immigration[d.code] = new Array(d.country_imm, d.max_imm)
+  })
   .await(ready);
 
 // Define the div for the tooltip
@@ -126,7 +132,10 @@ function ready(error, topo) {
         .style("opacity", .8)
         .on("mouseover", mouseOver )
         .on("mouseleave", mouseLeave )
-        .on("click", function(d) {vm.model.$modal(d.properties.name, date) })
+        .on("click", function(d) {
+          //console.log(emmigration[d.id])
+          vm.model.$modal(d.properties.name, date, emmigration[d.id], immigration[d.id]) 
+        })
     }
 }
 // Function and boolean for color blindness mode

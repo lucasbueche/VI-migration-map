@@ -1,12 +1,12 @@
 var modal = {
     model: {
-        modalBody: "faker.lorem.sentences(3)",
         showModal: false,
-        $showModal (country, date) {
+        $showModal (country, date, emmigration, immigration) {
             this.modalTitle = "Details for " + country + " in time period " + (date-5)+"-"+date;
-            d3.queue()
-                .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/dataset_"+date+".csv", function(d) { data.set(d.code, +d.norm_sold); })
-                .await(findMaxMigration);
+            this.modalBody = "Country most emmigrated to: " + emmigration[0] + "<br/>"
+            this.modalBody += "Total people born in "+ country +" living in " + emmigration[0] +" in "+ date + ": " + emmigration[1] +"<br/>"
+            this.modalBody += "<br/> Country most immigrated from: " + immigration[0] + "<br/>"
+            this.modalBody += "Total people born in "+ immigration[0] +" living in " + country +" in "+ date + ": " + immigration[1]
             this.showModal = true;
         },
         $hideModal () {
@@ -51,13 +51,12 @@ var modal = {
 
 var vm = d3.view({
     model: {
-        $modal(country, date) {
+        $modal(country, date, emmigration, immigration) {
             var modal = vm.select('.modal');
-
             if (!modal.size())
-                vm.select('body').append('modal').mount(null, v => v.model.$showModal(country, date));
+                vm.select('body').append('modal').mount(null, v => v.model.$showModal(country, date, emmigration, immigration));
             else
-                modal.model().$showModal(country, date);
+                modal.model().$showModal(country, date, emmigration, immigration);
         }
     },
     components: {
@@ -68,7 +67,3 @@ var vm = d3.view({
     }
 });
 vm.mount('body');
-
-function findMaxMigration(error, topo){
-    
-}
