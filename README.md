@@ -21,7 +21,7 @@ For development, you will need [Visual Studio Code](https://code.visualstudio.co
 
 You'll also need the "Live Server" extension of Visual Studio Code
 
-![Live Server](data/img/extension.png "Live Server extension")
+![Live Server](data/img/extension.PNG "Live Server extension")
 
 ## Project Installation
 
