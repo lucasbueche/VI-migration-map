@@ -51,14 +51,18 @@
           max-width: 900px;
       }
     </style>
-    <div class="container">
-      <h1 class="container-content">Migrations 2015</h1>
-    </div>
-    <div class="container" id="reset">
-      <div class="container-content" id="buttons"></div>
-    </div>
+    
     <div>
-      <div style="padding: 1em; text-align:center; ">
+      <div class="container">
+        <h1 class="container-content" id="title">Migrations between 2010 and 2015</h1>
+      </div>
+      <div class="svg-container" style="width:65%; float:left; height:100%">
+        <svg id="my_dataviz"></svg>
+      </div>
+      <div style="width:15% ; float:right; margin-top:10%; margin-right:10%">
+        <input type="range" value="2015" min="1995" max="2015" step="5" class="dates" name="dates"
+        onchange="changeDate(value)">
+      <div style="padding: 1em; text-align:center;">
         <b style="color: white; float: right;">
           "Color blindness mode"
         </b> <br/>
@@ -66,15 +70,17 @@
           <input type="button" id="1" value="OFF" style="color:blue" onclick="toggle(this);">
         </form>
       </div>
-      <div style="width: 25%; float:right; margin-top:20%">
+      <div style="width: 35%; float:right; margin-top:10%; margin-bottom:10%">
         <img style="object-position: bottom;" id="my_scale" src="../../data/img/red_to_green_scale.jpeg" alt="Echelle des couleurs">
       </div>
-      <div class="svg-container" style="width: 65%; float:left">
-        <svg id="my_dataviz"></svg>
-      </div>
+      
     </div>
     <script src="../script/scriptSVG.js"></script>
     <script>
+      function changeDate(date){
+        document.getElementById("title").innerHTML = "Migrations between " + (date-5) + " and " + date;
+        main_draw(date);
+      }
       function onResize() {
         let width = window.innerWidth;
         let canva = document.getElementById('my_dataviz');
@@ -91,12 +97,18 @@
   <footer>
     <div id="source">
       Sources:
-      <a id="source-link"
-        href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
-        >U.N. 2015 Migration data</a>
-      <a id="source-link"
-        href="https://data.worldbank.org/indicator/SP.POP.TOTL"
-        >World Bank population data</a>
+      <ul>
+        <li>
+          <a id="source-link"
+          href="https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates15.asp"
+          >U.N. 2015 Migration data</a>
+        </li>
+        <li>
+          <a id="source-link"
+          href="https://data.worldbank.org/indicator/SP.POP.TOTL"
+          >World Bank population data</a>
+        </li>
+      </ul>
     </div>
   </footer>
 </html>

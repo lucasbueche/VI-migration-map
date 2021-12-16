@@ -1,4 +1,4 @@
-function main_draw() {
+function main_draw(date = 2015) {
     const red_to_green_degraded = [
       "#ff0000",
       "#fe4400",
@@ -34,9 +34,9 @@ svg.selectAll("g").remove();
 // Map and projection
 var path = d3.geoPath();
 var projection = d3.geoMercator()
-  .scale(100)
+  .scale(150)
   .center([0,height/40])
-  .translate([width/2, height/2]);
+  .translate([width/3, height/3]);
 
 // Zooming
 var svg = d3.select("#my_dataviz")
@@ -60,10 +60,11 @@ var colorScale = d3.scaleThreshold()
   .domain([-10000, -1000, -100, -10, 0, 10, 100, 1000, 10000])
   .range(color);
 
+let dataset = "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_" + date +".csv"
 // Load external data and boot
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/map/custom.geojson")
-  .defer(d3.csv, "https://raw.githubusercontent.com/lucasbueche/VI-migration-map/main/data/CSV/migration_2015.csv", function(d) { data.set(d.code, +d.norm_sold); })
+  .defer(d3.csv, dataset, function(d) { data.set(d.code, +d.norm_sold); })
   .await(ready);
 
 // Define the div for the tooltip
