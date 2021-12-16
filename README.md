@@ -23,7 +23,8 @@ If you only want to use this project, then you don't have to install VSCode
 ## Project Installation
 
 First, you'll need to clone this project 
-  $ git clone https://github.com/lucasbueche/VI-migration-map.git
+
+<code> git clone https://github.com/lucasbueche/VI-migration-map.git</code>
   
 # Running the project
   
